@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
  connectDB()
  .then(() => {
     app.listen(process.env.PORT , () => {
-        console.log(` ✅ server running successfully on Port ${PORT}`)
+        console.log(` ✅ server running successfully on Port : ${PORT}`)
     })
  })
  .catch((error) => {
