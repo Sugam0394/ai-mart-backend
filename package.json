@@ -1,7 +1,8 @@
 {
   "name": "ai-mart",
   "version": "1.0.0",
-  "description": "start working my dream project ",
+ 
+  "description": "AI Mart is a backend API system for an AI tools marketplace platform.",
   "main": "index.js",
   "type": "module",
   "scripts": {
