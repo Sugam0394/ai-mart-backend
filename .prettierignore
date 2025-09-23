@@ -1,0 +1,21 @@
+ # Environment
+.env
+.env.test
+.env.production
+
+# Node dependencies
+node_modules/
+jspm_packages/
+
+# Logs
+logs/
+*.log
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Build outputs
+dist/
+.cache/
+.parcel-cache/
