@@ -8,6 +8,7 @@ name : {
     type : String,
     required : true,
     trim : true
+    
 },
 email : {
     type : String,
@@ -35,9 +36,9 @@ isVerified : {
     type : Boolean,
     default : false
 },
-refreshTokens : {
-    type : [String],
-    default : []
+refreshToken : {
+    type : String,
+    default : ''
 },
 lastLogin: {
     type : Date
