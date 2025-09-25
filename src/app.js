@@ -19,9 +19,12 @@ import router from './routes/userroutes.js';
 app.use('/api/v1/users' , router)
 
 // admin routes declaration
-
  import adminRouter from './routes/adminroutes.js';
 app.use('/api/v1/admin' , adminRouter) 
+
+// CRUD TOOLS
+import toolRouter from './routes/toolRoutes.js';
+app.use('/api/v1/tools' , toolRouter )
 
 
 export default app

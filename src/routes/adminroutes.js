@@ -2,7 +2,7 @@ import { Router } from "express";
 import {registerAdmin}from "../controllers/admincontroller.js";
 import { loginAdmin } from "../controllers/admincontroller.js";
  import upload from "../middlewares/multer.js";
- import { logOut } from "../controllers/usercontrollers.js";
+ import logout from "../controllers/logout.js";
  import verifyJWT from "../middlewares/auth.js";
  import generateToken from "../middlewares/generateToken.js";
  
@@ -20,7 +20,7 @@ adminRouter.route('/register').post(
 registerAdmin
 )
 adminRouter.route('/login').post(loginAdmin)
-adminRouter.route('/logout').post(verifyJWT ,  logOut)
+ adminRouter.route('/logout').post( verifyJWT , logout)
 adminRouter.route('/refreshToken').post(generateToken)
 
 

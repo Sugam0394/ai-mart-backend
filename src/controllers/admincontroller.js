@@ -2,7 +2,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/apiError.js";
 import ApiResponse from "../utils/apiResponse.js";
 import { User } from "../models/usermodels.js";
-import upload from "../middlewares/multer.js";
+ 
 import uploadCloudinary from "../utils/cloudinary.js";
 
 const generateToken = async(adminId) => {
@@ -20,7 +20,6 @@ const generateToken = async(adminId) => {
     throw new ApiError(500 , 'something went wrong whilw generate token')
   }
 }
-
 
 const registerAdmin = asyncHandler(async(req , res) => {
 const { name , email , password} = req.body
@@ -118,26 +117,7 @@ const loginAdmin = asyncHandler(async(req , res) => {
 
 })
 
-const logout = asyncHandler(async(req , res) => {
-  await User.findByIdAndUpdate(
-    req.user._id,
-    {
-      $set : {refreshToken : undefined}
-    },
-    {
-      new : true
-    }
-  )
-  const options = {
-    httpOnly : true,
-    secure : true
-  }
- return res.status(200).json({
-  statusCode : 200 ,
-  data : {},
-  message : `${req.user.role} logged out successfully`
- })
-})
+ 
 
 export  {
-  registerAdmin , loginAdmin , generateToken , logout}
+  registerAdmin , loginAdmin , generateToken}
