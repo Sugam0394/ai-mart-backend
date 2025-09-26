@@ -19,6 +19,11 @@
     type : String,
     required : [true , 'Tool url is required']
    },
+   field : {
+    type : String,
+    enum : ['students' , 'teacher'],
+    required : true,
+   },
 
    createdBy : {
      type : mongoose.Schema.Types.ObjectId,

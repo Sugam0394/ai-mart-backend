@@ -26,5 +26,9 @@ app.use('/api/v1/admin' , adminRouter)
 import toolRouter from './routes/toolRoutes.js';
 app.use('/api/v1/tools' , toolRouter )
 
+// review 
+import reviewRouter from './routes/reviewroutes.js';
+app.use('/api/v1/reviews' , reviewRouter)
+
 
 export default app

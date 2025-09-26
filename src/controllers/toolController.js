@@ -1,7 +1,7 @@
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiResponse from "../utils/apiResponse.js";
 import ApiError from "../utils/apiError.js";
-import { Tool } from "../models/toolmodel.js";
+import {Tool} from '../models/toolmodel.js'
  
 
 
@@ -21,12 +21,12 @@ const createTool = asyncHandler(async(req , res) => {
     })
 })
 // get Single tools by ID
-const getTool = asyncHandler(async(req , res) => {
+const getTool = asyncHandler(async(req , res , next) => {
  const tool = await Tool.findById(req.params.id );
-
     if (!tool) {
         return next (new ApiError(`No tool found with ID ${req.params.id}` , 404))
     }
+
     res.status(200).json({
         success : true,
         message : "Tool fetched successfully",
@@ -62,7 +62,6 @@ res.status(200).json({
     data : null
 })
 })
-
 // delete Tool
 const deleteTool = asyncHandler(async(req , res , next) => {
  const tool = await Tool.findByIdAndDelete(req.params.id);
