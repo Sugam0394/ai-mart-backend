@@ -1,5 +1,4 @@
 import asyncHandler from "../utils/asyncHandler.js";
-import ApiResponse from "../utils/apiResponse.js";
 import ApiError from "../utils/apiError.js";
 import {Tool} from '../models/toolmodel.js'
  
@@ -7,7 +6,6 @@ import {Tool} from '../models/toolmodel.js'
 
 
 // CREATE TOOL
-
 const createTool = asyncHandler(async(req , res) => {
   const tool = await Tool.create({
    ...req.body ,
@@ -16,7 +14,7 @@ const createTool = asyncHandler(async(req , res) => {
   })
     res.status(201).json({
         sucess : true,
-        message : 'Tool creted successfully',
+        message : 'Tool created successfully',
         data : tool
     })
 })

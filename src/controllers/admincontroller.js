@@ -17,7 +17,7 @@ const generateToken = async(adminId) => {
      await admin.save({validateBeforeSave : false})
      return { accessToken , refreshToken}
   } catch (error) {
-    throw new ApiError(500 , 'something went wrong whilw generate token')
+    throw new ApiError(500 , 'something went wrong while generate token')
   }
 }
 
@@ -30,7 +30,6 @@ if(!name || !email || !password){
 }
 
   // email validation
-
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     throw new ApiError(400, 'Invalid email format');
@@ -46,7 +45,6 @@ if(!name || !email || !password){
  }
 
  // file handling
-
  let ImagePath = req.files?.profilePicture?.[0]?.path;
 
  let image = null;
@@ -77,6 +75,7 @@ if(!name || !email || !password){
 
 })
 const loginAdmin = asyncHandler(async(req , res) => {
+
   // admin details
   const { email , password} = req.body;
 
@@ -85,7 +84,6 @@ const loginAdmin = asyncHandler(async(req , res) => {
   }
 
   // admin search
-
   const admin = await User.findOne({email})
 
   if (!admin) {
@@ -93,7 +91,6 @@ const loginAdmin = asyncHandler(async(req , res) => {
   }
 
   // password validation
-
   const isPasswordValid = await admin.comparePassword(password)
 
   if (!isPasswordValid) {

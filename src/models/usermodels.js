@@ -62,8 +62,8 @@ userSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password , this.password)
 }
 
-// Access Token
 
+// Access Token
 userSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
@@ -74,6 +74,7 @@ userSchema.methods.generateAccessToken = function(){
         {expiresIn : '15m'}
     )
 }
+
 
 // Refresh Token 
 userSchema.methods.generateRefreshToken = function(){

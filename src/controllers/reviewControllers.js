@@ -1,13 +1,11 @@
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/apiError.js";
-import ApiResponse from "../utils/apiResponse.js";
 import { Review } from "../models/reviewmodel.js";
 import { Tool } from "../models/toolmodel.js";
 
 
 
 // helper function 
-
  const updateToolRating = async(toolId) => {
     const reviews = await Review.find({tool : toolId})
 
@@ -19,9 +17,7 @@ import { Tool } from "../models/toolmodel.js";
         numberOfReviews : reviews.length,
     });
  };
-
  // create Review
- 
  const createReview = asyncHandler(async(req , res , next) => {
     const {tool , rating , comment} = req.body;
 
@@ -41,6 +37,9 @@ import { Tool } from "../models/toolmodel.js";
         rating ,
         comment
     })
+    if (!review) {
+        return next (new ApiError('Review not created' , 400))
+    }
 
     await updateToolRating(tool);
 
@@ -49,7 +48,7 @@ import { Tool } from "../models/toolmodel.js";
         message : 'Review added successfully'
     })
  })
-
+// GgetTool Review
  const getToolReview = asyncHandler(async(req , res) => {
     const reviews = await Review.find({tool : req.params.toolId})
     .populate("user" , "name email")
@@ -61,7 +60,6 @@ import { Tool } from "../models/toolmodel.js";
         data : reviews
     })
  })
-
  // update review
  const updateReview = asyncHandler(async(req , res , next) => {
     const { rating , comment} = req.body;
@@ -108,9 +106,6 @@ res.status(200).json({
     success : true,
     message : 'Review deleted successfully'
 })
-
-
-
  })
 
 

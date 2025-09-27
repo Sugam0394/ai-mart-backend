@@ -17,12 +17,7 @@ AI-Mart is a full-stack project (currently backend v1) that allows users and adm
   - **Read Tool** (Admin/User)
   - **Update Tool** (Admin)
   - **Delete Tool** (Admin)
-- Advanced GET route with:
-  - Filtering
-  - Sorting
-  - Pagination
-  - Search by keywords
-  - Recommendations based on user type (Student/Teacher)
+ 
 
 ### Reviews
 - Users can create reviews for tools.

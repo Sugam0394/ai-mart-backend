@@ -34,26 +34,24 @@ const registerUser = asyncHandler(async(req , res) => {
  if (!name || !email || !password) {
     throw new ApiError(400 , 'All fields are required')
  }
- // single email regex 
 
+ // single email regex 
  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  if (!emailRegex.test(email)) {
     throw new ApiError(400 , 'Invalid email forget')
  }
 
- // user find
 
+ // user find
  const existedUser = await User.findOne({
     $or : [{email}]
  })
 
-  
 if (existedUser) {
     throw new ApiError(409 , 'User with email is already exists')
 }
 
 // file handling
-
 const profileImage = req.files?.profilePicture?.[0]?.path;
 
 let image = null;
@@ -62,8 +60,8 @@ if (profileImage) {
     image = await uploadCloudinary(profileImage)
 }
 
- // user create in db
 
+ // user create in db
  let user = await User.create({
     name,
     email ,
@@ -92,14 +90,12 @@ const loginUser = asyncHandler(async(req , res) => {
  }
 
  // user search
-
  const user = await User.findOne({email})
  if (!user) {
    throw new ApiError(404 , 'User does not exist')
  }
 
  // password validation
-
  const isPasswordValid = await user.comparePassword(password)
 
  if (!isPasswordValid) {
